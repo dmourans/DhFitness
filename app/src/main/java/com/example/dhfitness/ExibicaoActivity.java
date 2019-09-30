@@ -43,31 +43,20 @@ public class ExibicaoActivity extends AppCompatActivity {
 
         Bundle bundle = intent.getExtras();
 
-//        Pessoa pessoa = bundle.getParcelable(PESSOA_KEY);
-//        nome = pessoa.getNome();
-//        idade = pessoa.getIdade();
-//        peso = pessoa.getPeso();
-//        altura = pessoa.getAltura();
-//        int imagem = pessoa.getImagem();
-
-
         nome = bundle.getString(NOME_KEY);
         idade = bundle.getInt(IDADE_KEY);
         peso = bundle.getDouble(PESO_KEY);
         altura = bundle.getDouble(ALTURA_KEY);
-        int imagem = bundle.getInt(IMG_KEY);
+        final int imagem = bundle.getInt(IMG_KEY);
 
-        recebeNome.setText(nome);
         recebeIdade.setText("Idade: " + idade);
         recebePeso.setText("Peso: " + peso);
         recebeAltura.setText("Altura: " + altura);
 
-        //ImageView imageview  = (ImageView) findViewById(imagem);
-        //Drawable drawable = getResources().getDrawable(imagem);
-        //Drawable drawable = (Drawable) ContextCompat.getDrawable(getApplicationContext(), imagem);
+        Drawable drawable = getResources().getDrawable(imagem);
 
         recebeNome.setText(String.format("Seja bem-vindo, %s. Esse é um aplicativo que te ajuda a saber e calcular o seu índice de massa corporal.", nome));
-        //recebeImagem.setImageDrawable(drawable);
+        recebeImagem.setImageDrawable(drawable);
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +69,7 @@ public class ExibicaoActivity extends AppCompatActivity {
                 bundle.putInt(IDADE_KEY, idade);
                 bundle.putDouble(PESO_KEY, peso);
                 bundle.putDouble(ALTURA_KEY, altura);
+                bundle.putInt(IMG_KEY, imagem);
 
                 intent.putExtras(bundle);
 

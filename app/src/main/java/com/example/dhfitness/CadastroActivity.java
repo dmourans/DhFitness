@@ -46,7 +46,7 @@ public class CadastroActivity extends AppCompatActivity {
                 int idade = Integer.parseInt(inputIdade.getEditText().getText().toString());
                 double peso = Double.parseDouble(inputPeso.getEditText().getText().toString());
                 double altura = Double.parseDouble(inputAltura.getEditText().getText().toString());
-                int imagem = R.id.imgProfile;
+                //int imagem = R.id.imgProfile;
                 //int imagem = Integer.parseInt(String.valueOf(imgProfile.getId()));
 
                 //Pessoa pessoa = new Pessoa(nome, idade, peso, altura, imagem);
@@ -55,7 +55,7 @@ public class CadastroActivity extends AppCompatActivity {
                 bundle.putInt(IDADE_KEY, idade);
                 bundle.putDouble(PESO_KEY, peso);
                 bundle.putDouble(ALTURA_KEY, altura);
-                bundle.putInt(IMG_KEY, imagem);
+                bundle.putInt(IMG_KEY, R.drawable.fitness);
                 //bundle.putParcelable(PESSOA_KEY, pessoa);
 
                 intent.putExtras(bundle);

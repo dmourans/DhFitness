@@ -21,7 +21,8 @@ import static com.example.dhfitness.CadastroActivity.PESO_KEY;
 import static com.example.dhfitness.CadastroActivity.PESSOA_KEY;
 
 public class ResultadoActivity extends AppCompatActivity implements Comunicador {
-    private Comunicador comunicador;
+
+    private FloatingActionButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,16 @@ public class ResultadoActivity extends AppCompatActivity implements Comunicador 
         double peso = bundle.getDouble(PESO_KEY);
         double altura = bundle.getDouble(ALTURA_KEY);
 
-        Pessoa pessoa = new Pessoa(peso, altura);
-        comunicador.recebeMensagem(pessoa);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(ResultadoActivity.this, CadastroActivity.class);
+                startActivity(intent1);
+            }
+        });
+
+
+
     }
 
     public void replaceFragment(int container, Fragment fragment){
@@ -56,7 +65,7 @@ public class ResultadoActivity extends AppCompatActivity implements Comunicador 
     public void setBundleToFragment(Pessoa pessoa, String CHAVE){
         Bundle bundle = new Bundle();
 
-        bundle.putParcelable(CHAVE, pessoa);
+        bundle.putParcelable(CHAVE, Opcao);
 
         Fragment botaoFragment = new BotaoFragment();
 
@@ -64,6 +73,8 @@ public class ResultadoActivity extends AppCompatActivity implements Comunicador 
 
         replaceFragment(R.id.container, botaoFragment);
     }
+
+
 
 
 }
