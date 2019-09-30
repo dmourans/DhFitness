@@ -1,6 +1,7 @@
 package com.example.dhfitness;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -15,6 +16,7 @@ import static com.example.dhfitness.CadastroActivity.IDADE_KEY;
 import static com.example.dhfitness.CadastroActivity.IMG_KEY;
 import static com.example.dhfitness.CadastroActivity.NOME_KEY;
 import static com.example.dhfitness.CadastroActivity.PESO_KEY;
+import static com.example.dhfitness.CadastroActivity.PESSOA_KEY;
 
 public class ExibicaoActivity extends AppCompatActivity {
     private TextView recebeNome;
@@ -29,6 +31,7 @@ public class ExibicaoActivity extends AppCompatActivity {
     private double peso;
     private double altura;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,20 +39,35 @@ public class ExibicaoActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        initViews();
+
         Bundle bundle = intent.getExtras();
+
+//        Pessoa pessoa = bundle.getParcelable(PESSOA_KEY);
+//        nome = pessoa.getNome();
+//        idade = pessoa.getIdade();
+//        peso = pessoa.getPeso();
+//        altura = pessoa.getAltura();
+//        int imagem = pessoa.getImagem();
+
 
         nome = bundle.getString(NOME_KEY);
         idade = bundle.getInt(IDADE_KEY);
         peso = bundle.getDouble(PESO_KEY);
         altura = bundle.getDouble(ALTURA_KEY);
         int imagem = bundle.getInt(IMG_KEY);
-        Drawable drawable = getResources().getDrawable(imagem);
 
-        recebeNome.setText(String.format("Seja bem-vindo, %s. Esse é um aplicativo que te ajuda a saber e calcular o seu índice de massa corporal.", nome));
+        recebeNome.setText(nome);
         recebeIdade.setText("Idade: " + idade);
         recebePeso.setText("Peso: " + peso);
         recebeAltura.setText("Altura: " + altura);
-        recebeImagem.setImageDrawable(drawable);
+
+        //ImageView imageview  = (ImageView) findViewById(imagem);
+        //Drawable drawable = getResources().getDrawable(imagem);
+        //Drawable drawable = (Drawable) ContextCompat.getDrawable(getApplicationContext(), imagem);
+
+        recebeNome.setText(String.format("Seja bem-vindo, %s. Esse é um aplicativo que te ajuda a saber e calcular o seu índice de massa corporal.", nome));
+        //recebeImagem.setImageDrawable(drawable);
 
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override

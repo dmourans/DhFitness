@@ -3,4 +3,5 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="info_imc">O índice de massa corporal é uma medida internacional usada para calcular se uma pessoa está no peso ideal.</string>
 </resources>
